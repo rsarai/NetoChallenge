@@ -3,9 +3,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 public class AnaliseCombinatoria {
-	
 	public static void main(String[] args) {
-		ArrayList<Integer> t = new ArrayList<>();
+		ArrayList<Integer> t = new ArrayList<Integer>();
 		t.add(1);
 		t.add(2);
 		t.add(3);
@@ -21,33 +20,118 @@ public class AnaliseCombinatoria {
 		gerarSolucoesPara12(t);
 	}
 	
-	public static Sequence gerarSolucoesPara12(ArrayList<Integer> initialNumbers){
-		Sequence s = new Sequence();
-		LinkedList<HashSet<Integer>> list = new LinkedList<>();
-		
+	
+	//SEGUNDO FORMULA A QUANTIDADE MAXIMA DE GERAÇÕES PARA UM NUMERO N DE NUMEROS PARA NUMEROS DE TAMANHO R EH DADO POR:
+	// N!/ ((N-R)!*R!)
+	public static LinkedList<HashSet<Integer>> gerarSolucoesPara12(ArrayList<Integer> initialNumbers){
+		LinkedList<HashSet<Integer>> list = new LinkedList<HashSet<Integer>>();
+
 		for(int i = 0; i <12; i++){
-			for(int j = 0; j < 11; j++){
-				for(int k = 0; k < 10; k++){
-					HashSet<Integer> value = new HashSet<>();
-					value.add(initialNumbers.get(i));
-					
-					if(!value.contains(initialNumbers.get(j))){
-						value.add(initialNumbers.get(j));
-						if(!value.contains(initialNumbers.get(k))){
-							value.add(initialNumbers.get(k));
-							if(!list.contains(value)){
-								list.add(value);
-								System.out.println(value.toString());
+			for(int j = 0; j < 12; j++){
+				for(int k = 0; k < 12; k++){
+					for(int l = 0; l < 12; l++){
+						for(int m = 0; m < 12; m++){
+							for(int n = 0; n < 12; n++){
+								for(int o = 0; o < 12; o++){
+										HashSet<Integer> value = new HashSet<Integer>();
+										value.add(initialNumbers.get(i));
+
+										if(!value.contains(initialNumbers.get(j))){
+											value.add(initialNumbers.get(j));
+
+											if(!value.contains(initialNumbers.get(k))){
+												value.add(initialNumbers.get(k));
+
+												if(!value.contains(initialNumbers.get(l))){
+													value.add(initialNumbers.get(l));
+
+													if(!value.contains(initialNumbers.get(m))){
+														value.add(initialNumbers.get(m));
+
+
+														if(!value.contains(initialNumbers.get(n))){
+															value.add(initialNumbers.get(n));
+
+															if(!value.contains(initialNumbers.get(o))){
+																value.add(initialNumbers.get(o));
+
+																	if(!list.contains(value)){
+																		list.add(value);
+																		System.out.println(value.toString());
+																	}
+															}
+														}
+													}
+												}
+											}
+										}
+								}
 							}
 						}
 					}
-					
 				}
 			}
 		}
-		s.setSequence(list);
-		return s;
+		return list;
+
 	}
 
 
+	public static LinkedList<HashSet<Integer>> gerarSolucoesPara13(ArrayList<Integer> initialNumbers){
+		LinkedList<HashSet<Integer>> list = new LinkedList<HashSet<Integer>>();
+
+		for(int i = 0; i <13; i++){
+			for(int j = 1; j < 13; j++){
+				for(int k = 2; k < 13; k++){
+					for(int l = 3; l < 13; l++){
+						for(int m = 4; m < 13; m++){
+							for(int n = 5; n < 13; n++){
+								for(int o = 6; o < 13; o++){
+									for(int p = 7; p < 13; p++){
+										HashSet<Integer> value = new HashSet<Integer>();
+										value.add(initialNumbers.get(i));
+
+										if(!value.contains(initialNumbers.get(j))){
+											value.add(initialNumbers.get(j));
+
+											if(!value.contains(initialNumbers.get(k))){
+												value.add(initialNumbers.get(k));
+
+												if(!value.contains(initialNumbers.get(l))){
+													value.add(initialNumbers.get(l));
+
+													if(!value.contains(initialNumbers.get(m))){
+														value.add(initialNumbers.get(m));
+
+
+														if(!value.contains(initialNumbers.get(n))){
+															value.add(initialNumbers.get(n));
+
+															if(!value.contains(initialNumbers.get(o))){
+																value.add(initialNumbers.get(o));
+
+																if(!value.contains(initialNumbers.get(p))){
+																		value.add(initialNumbers.get(p));
+																		if(!list.contains(value)){
+																			list.add(value);
+																			System.out.println(value.toString());
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+	
+		}
+		return list;
+	}
 }
