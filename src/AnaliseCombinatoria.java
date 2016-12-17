@@ -23,8 +23,9 @@ public class AnaliseCombinatoria {
 	
 	//SEGUNDO FORMULA A QUANTIDADE MAXIMA DE GERAÇÕES PARA UM NUMERO N DE NUMEROS PARA NUMEROS DE TAMANHO R EH DADO POR:
 	// N!/ ((N-R)!*R!)
-	public static LinkedList<HashSet<Integer>> gerarSolucoesPara12(ArrayList<Integer> initialNumbers){
+	public static String gerarSolucoesPara12(ArrayList<Integer> initialNumbers){
 		LinkedList<HashSet<Integer>> list = new LinkedList<HashSet<Integer>>();
+		StringBuilder str = new StringBuilder();
 
 		for(int i = 0; i <12; i++){
 			for(int j = 0; j < 12; j++){
@@ -57,6 +58,8 @@ public class AnaliseCombinatoria {
 
 																	if(!list.contains(value)){
 																		list.add(value);
+																		str.append(value.toString());
+																		str.append("\n");
 																		System.out.println(value.toString());
 																	}
 															}
@@ -72,13 +75,14 @@ public class AnaliseCombinatoria {
 				}
 			}
 		}
-		return list;
+		return str.toString();
 
 	}
 
 
-	public static LinkedList<HashSet<Integer>> gerarSolucoesPara13(ArrayList<Integer> initialNumbers){
+	public static String gerarSolucoesPara13(ArrayList<Integer> initialNumbers){
 		LinkedList<HashSet<Integer>> list = new LinkedList<HashSet<Integer>>();
+		StringBuilder str = new StringBuilder();
 
 		for(int i = 0; i <13; i++){
 			for(int j = 1; j < 13; j++){
@@ -114,6 +118,8 @@ public class AnaliseCombinatoria {
 																		value.add(initialNumbers.get(p));
 																		if(!list.contains(value)){
 																			list.add(value);
+																			str.append(value.toString());
+																			str.append("\n\n\n");
 																			System.out.println(value.toString());
 																		}
 																	}
@@ -132,6 +138,6 @@ public class AnaliseCombinatoria {
 			}
 	
 		}
-		return list;
+		return str.toString();
 	}
 }
