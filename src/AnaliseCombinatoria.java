@@ -119,7 +119,7 @@ public class AnaliseCombinatoria {
 																		if(!list.contains(value)){
 																			list.add(value);
 																			str.append(value.toString());
-																			str.append("\n\n\n");
+																			str.append("\n");
 																			System.out.println(value.toString());
 																		}
 																	}

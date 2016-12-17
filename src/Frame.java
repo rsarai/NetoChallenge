@@ -75,14 +75,14 @@ public class Frame extends JFrame {
 		contentPane.setLayout(null);
 		
 		gerar12campo6 = new JTextField();
-		gerar12campo6.setBounds(488, 47, 23, 20);
+		gerar12campo6.setBounds(498, 47, 23, 20);
 		contentPane.add(gerar12campo6);
 		gerar12campo6.setColumns(10);
 		lblDigiteNmeros.setBounds(488, 11, 107, 31);
 		contentPane.add(lblDigiteNmeros);
 		
 		JLabel lblDigiteNmeros_1 = new JLabel("Digite 13 n\u00FAmeros");
-		lblDigiteNmeros_1.setBounds(479, 136, 125, 31);
+		lblDigiteNmeros_1.setBounds(488, 136, 107, 31);
 		contentPane.add(lblDigiteNmeros_1);
 		
 		gerar13campo13 = new JTextField();
@@ -92,57 +92,57 @@ public class Frame extends JFrame {
 		
 		gerar12campo7 = new JTextField();
 		gerar12campo7.setColumns(10);
-		gerar12campo7.setBounds(521, 47, 23, 20);
+		gerar12campo7.setBounds(530, 47, 23, 20);
 		contentPane.add(gerar12campo7);
 		
 		gerar12campo8 = new JTextField();
 		gerar12campo8.setColumns(10);
-		gerar12campo8.setBounds(554, 47, 23, 20);
+		gerar12campo8.setBounds(563, 47, 23, 20);
 		contentPane.add(gerar12campo8);
 		
 		gerar12campo9 = new JTextField();
 		gerar12campo9.setColumns(10);
-		gerar12campo9.setBounds(587, 47, 23, 20);
+		gerar12campo9.setBounds(596, 47, 23, 20);
 		contentPane.add(gerar12campo9);
 		
 		gerar12campo10 = new JTextField();
 		gerar12campo10.setColumns(10);
-		gerar12campo10.setBounds(620, 47, 23, 20);
+		gerar12campo10.setBounds(629, 47, 23, 20);
 		contentPane.add(gerar12campo10);
 		
 		gerar12campo11 = new JTextField();
 		gerar12campo11.setColumns(10);
-		gerar12campo11.setBounds(653, 47, 23, 20);
+		gerar12campo11.setBounds(662, 47, 23, 20);
 		contentPane.add(gerar12campo11);
 		
 		gerar12campo12 = new JTextField();
 		gerar12campo12.setColumns(10);
-		gerar12campo12.setBounds(686, 47, 23, 20);
+		gerar12campo12.setBounds(695, 47, 23, 20);
 		contentPane.add(gerar12campo12);
 		
 		gerar12campo5 = new JTextField();
 		gerar12campo5.setColumns(10);
-		gerar12campo5.setBounds(455, 47, 23, 20);
+		gerar12campo5.setBounds(465, 47, 23, 20);
 		contentPane.add(gerar12campo5);
 		
 		gerar12campo4 = new JTextField();
 		gerar12campo4.setColumns(10);
-		gerar12campo4.setBounds(422, 47, 23, 20);
+		gerar12campo4.setBounds(432, 47, 23, 20);
 		contentPane.add(gerar12campo4);
 		
 		gerar12campo3 = new JTextField();
 		gerar12campo3.setColumns(10);
-		gerar12campo3.setBounds(389, 47, 23, 20);
+		gerar12campo3.setBounds(399, 47, 23, 20);
 		contentPane.add(gerar12campo3);
 		
 		gerar12campo2 = new JTextField();
 		gerar12campo2.setColumns(10);
-		gerar12campo2.setBounds(356, 47, 23, 20);
+		gerar12campo2.setBounds(366, 47, 23, 20);
 		contentPane.add(gerar12campo2);
 		
 		gerar12campo1 = new JTextField();
 		gerar12campo1.setColumns(10);
-		gerar12campo1.setBounds(323, 47, 23, 20);
+		gerar12campo1.setBounds(333, 47, 23, 20);
 		contentPane.add(gerar12campo1);
 		
 		gerar13campo1 = new JTextField();
@@ -214,23 +214,28 @@ public class Frame extends JFrame {
 		JButton btnGerar = new JButton("Gerar");
 		btnGerar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblNewLabel.setText("Calculando combinações...");
-				ArrayList<Integer> data = gerar13();
-				JFrame parentFrame = new JFrame();
-				
-				JFileChooser fileChooser = new JFileChooser();
-				fileChooser.setDialogTitle("Specify a file to save");    
-				int userSelection = fileChooser.showSaveDialog(parentFrame);
-				String path = null;
-				
-				if (userSelection == JFileChooser.APPROVE_OPTION) {
-				    File fileToSave = fileChooser.getSelectedFile();
-				    path = fileToSave.getAbsolutePath();
-				    
-				    criarFile(data, path);
+				try{
+					lblNewLabel.setText("Calculando combinações...");
+					ArrayList<Integer> data = gerar13();
+					JFrame parentFrame = new JFrame();
+					
+					JFileChooser fileChooser = new JFileChooser();
+					fileChooser.setDialogTitle("Specify a file to save");    
+					int userSelection = fileChooser.showSaveDialog(parentFrame);
+					String path = null;
+					
+					if (userSelection == JFileChooser.APPROVE_OPTION) {
+					    File fileToSave = fileChooser.getSelectedFile();
+					    path = fileToSave.getAbsolutePath();
+					    
+					    criarFile(data, path);
+					}
+					
+					lblNewLabel.setText("Seu arquivo foi salvo.");
+				}catch(NumberFormatException ex){
+					lblNewLabel.setText("");
+					JOptionPane.showMessageDialog(contentPane, "Você digitou algo que não é número! Tente novamente.");
 				}
-				
-				lblNewLabel.setText("");
 			}
 			
 		});
@@ -240,23 +245,29 @@ public class Frame extends JFrame {
 		JButton button = new JButton("Gerar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblNewLabel.setText("Calculando combinações...");
-				ArrayList<Integer> data = gerar12();
-				JFrame parentFrame = new JFrame();
-				 
-				JFileChooser fileChooser = new JFileChooser();
-				fileChooser.setDialogTitle("Specify a file to save");   
-				int userSelection = fileChooser.showSaveDialog(parentFrame);
-				 
-			    String path = null;					
-				if (userSelection == JFileChooser.APPROVE_OPTION) {
-				    File fileToSave = fileChooser.getSelectedFile();
-				    path = fileToSave.getAbsolutePath();
-				    
-				    criarFile2(data, path);
-				}
 				
-				lblNewLabel.setText("");
+				try{
+					lblNewLabel.setText("Calculando combinações...");
+					ArrayList<Integer> data = gerar12();
+					JFrame parentFrame = new JFrame();
+					 
+					JFileChooser fileChooser = new JFileChooser();
+					fileChooser.setDialogTitle("Specify a file to save");   
+					int userSelection = fileChooser.showSaveDialog(parentFrame);
+					 
+				    String path = null;					
+					if (userSelection == JFileChooser.APPROVE_OPTION) {
+					    File fileToSave = fileChooser.getSelectedFile();
+					    path = fileToSave.getAbsolutePath();
+					    
+					    criarFile2(data, path);
+					}
+					
+					lblNewLabel.setText("Seu arquivo foi salvo.");
+				}catch(NumberFormatException ex){
+					lblNewLabel.setText("");
+					JOptionPane.showMessageDialog(contentPane, "Você digitou algo que não é número! Tente novamente.");
+				}
 				
 			}
 		});
@@ -299,9 +310,8 @@ public class Frame extends JFrame {
 		return str.replace("]", "").replace("[", "");
 	}
 	
-	private ArrayList<Integer> gerar12() {
-		ArrayList<Integer> inputData = new ArrayList<>();
-		try{
+	private ArrayList<Integer> gerar12() throws NumberFormatException{
+			ArrayList<Integer> inputData = new ArrayList<>();
 			String numero = gerar12campo1.getText();
 			if(numero == null || numero.isEmpty()){
 				throw new NumberFormatException();
@@ -402,129 +412,120 @@ public class Frame extends JFrame {
 			
 			inputData.add(n);
 			
-		}catch(NumberFormatException e){
-			JOptionPane.showMessageDialog(this, "Você digitou algo que não é número! Tente novamente.");
-		}
-		
 		return inputData;
 	}
 	
-	private ArrayList<Integer> gerar13() {
+	private ArrayList<Integer> gerar13() throws NumberFormatException{
 		ArrayList<Integer> inputData = new ArrayList<>();
-		try{
-			String numero = gerar13campo1.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			int n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-			
-			numero = gerar13campo2.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-			
-			numero = gerar13campo3.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-			
-			numero = gerar13campo4.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-			numero = gerar13campo5.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-			numero = gerar13campo6.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-			numero = gerar13campo7.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-			numero = gerar13campo8.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-			numero = gerar13campo9.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-			numero = gerar13campo10.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-			numero = gerar13campo11.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-			numero = gerar13campo12.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-			
-			numero = gerar13campo13.getText();
-			if(numero == null || numero.isEmpty()){
-				throw new NumberFormatException();
-			}
-			
-			n = Integer.parseInt(numero);
-			
-			inputData.add(n);
-				
-			
-		}catch(NumberFormatException e){
-			JOptionPane.showMessageDialog(this, "Você digitou algo que não é número! Tente novamente.");
+		String numero = gerar13campo1.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
 		}
+		
+		int n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+		
+		numero = gerar13campo2.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
+		}
+		
+		n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+		
+		numero = gerar13campo3.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
+		}
+		
+		n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+		
+		numero = gerar13campo4.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
+		}
+		
+		n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+		numero = gerar13campo5.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
+		}
+		
+		n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+		numero = gerar13campo6.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
+		}
+		
+		n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+		numero = gerar13campo7.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
+		}
+		
+		n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+		numero = gerar13campo8.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
+		}
+		
+		n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+		numero = gerar13campo9.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
+		}
+		
+		n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+		numero = gerar13campo10.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
+		}
+		
+		n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+		numero = gerar13campo11.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
+		}
+		
+		n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+		numero = gerar13campo12.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
+		}
+		
+		n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+		
+		numero = gerar13campo13.getText();
+		if(numero == null || numero.isEmpty()){
+			throw new NumberFormatException();
+		}
+		
+		n = Integer.parseInt(numero);
+		
+		inputData.add(n);
+			
 		return inputData;
 	}
 }
